@@ -17,6 +17,8 @@ def l():
         ts=[]
         for v in ps:
             if v==' ' or v=='\n':continue
+            elif v=='~':
+                ts[-1]+=100
             elif v=='/':
                 ts[-1]+=1
             elif v=='^':
@@ -42,4 +44,9 @@ def l():
         l+=';'
     l+='\n'
     open('ls','a+').write(l)
-l() 
+def p():
+    l=open('ls','r').read().split('\n')
+if len(sys.argv)>1 and sys.argv[1]=='p':
+    p()
+else:l()
+
