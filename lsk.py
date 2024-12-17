@@ -82,8 +82,9 @@ def p():
                 k=k+nd
             else:continue
         sl()
-        if 0:system('./sv 3')
-
+        tss=l[k].split(';')[1:]
+        for ts in tss:
+            system('echo '+' '.join(ts.split(','))+'|./sv 13')
 
 if len(sys.argv)>1 and sys.argv[1]=='p':
     p()
