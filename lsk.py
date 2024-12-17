@@ -46,18 +46,22 @@ def l():
     open('ls','a+').write(l)
 def p():
     from os import system
+    import datetime
     l=open('ls','r').read().split('\n')[0:-1]
     if len(l)==0:
         return
     k=0
-    while 1:
+    def sl():
         system('clear')
         print(str(k)+'<'+str(len(l)))
+        print(datetime.datetime.fromtimestamp(float(l[k].split(';')[0])).strftime('%Y-%m-%d %H:%M:%S'))
+    sl()
+    while 1:
         nd=input()
+        s=False
         if nd=='n':
             system('clear')
             break
-        s=False
         elif len(nd)>0 and nd[0]=='s':
             nd=nd[1:]
             s=True
@@ -77,7 +81,8 @@ def p():
             if k+nd>=0 and k+nd<len(l):
                 k=k+nd
             else:continue
-        system('sv')
+        sl()
+        if 0:system('./sv 3')
 
 
 if len(sys.argv)>1 and sys.argv[1]=='p':
