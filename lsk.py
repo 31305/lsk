@@ -45,7 +45,41 @@ def l():
     l+='\n'
     open('ls','a+').write(l)
 def p():
-    l=open('ls','r').read().split('\n')
+    from os import system
+    l=open('ls','r').read().split('\n')[0:-1]
+    if len(l)==0:
+        return
+    k=0
+    while 1:
+        system('clear')
+        print(str(k)+'<'+str(len(l)))
+        nd=input()
+        if nd=='n':
+            system('clear')
+            break
+        s=False
+        elif len(nd)>0 and nd[0]=='s':
+            nd=nd[1:]
+            s=True
+        if nd=='':
+            nd='0'
+        try:
+            nd=int(nd)
+        except:
+            continue
+        if s:
+            if nd<0 and abs(nd)<=len(l):
+                k=len(l)+nd
+            elif nd<len(l):
+                k=nd
+            else:continue
+        else:
+            if k+nd>=0 and k+nd<len(l):
+                k=k+nd
+            else:continue
+        system('sv')
+
+
 if len(sys.argv)>1 and sys.argv[1]=='p':
     p()
 else:l()
