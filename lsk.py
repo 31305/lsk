@@ -38,7 +38,7 @@ def l():
             if sn[k]==1 and sn[k-1]==2 and not (k<len(sn)-1 and (sn[k+1]!=1)):
                 ts[ss[k]]+=2
         tss+=[ts]
-    l=str(ks)+';'
+    l=str(int(ks))+';'
     for ts in tss:
         l+=','.join([str(v) for v in ts])
         l+=';'
@@ -54,7 +54,7 @@ def p():
     def sl():
         system('clear')
         print(str(k)+'<'+str(len(l)))
-        print(datetime.datetime.fromtimestamp(float(l[k].split(';')[0])).strftime('%Y-%m-%d %H:%M:%S'))
+        print(datetime.datetime.fromtimestamp(int(l[k].split(';')[0])).strftime('%Y-%m-%d %H:%M:%S'))
     sl()
     while 1:
         nd=input()
