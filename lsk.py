@@ -82,7 +82,7 @@ def p():
                 k=k+nd
             else:continue
         sl()
-        tss=l[k].split(';')[1:]
+        tss=l[k].split(';')[1:-1]
         for ts in tss:
             system('echo '+' '.join(ts.split(','))+'|./sv 13')
 
