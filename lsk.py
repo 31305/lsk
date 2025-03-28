@@ -15,7 +15,7 @@ def snl(ps):
 		elif v=='~':
 			ts[-1]+=100
 		elif v=='/':
-			if len(ts)>1:ts[-1]+=1
+			if len(ts)>0:ts[-1]+=1
 		elif v=='^':
 			ts[-1]+=2
 		else:
