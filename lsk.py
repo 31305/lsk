@@ -38,7 +38,7 @@ def nv():
     ks=time.time()
     pps=''
     for ps in sys.stdin:
-        if ps=='\n':
+        if ps=='@#':
             ps=pps
         pps=ps
         ts=snl(ps)
