@@ -8,35 +8,48 @@ for k in range(0,len(ss)):
 nss='yrlvSzshkKgGNcCjJYwWqQRtTdDnpPbBmMH`'
 for k in range(0,len(nss)):
     vs[nss[k]]=43+k
+def snl(ps):
+	ts=[]
+	for v in ps:
+		if v==' ' or v=='\n':continue
+		elif v=='~':
+			ts[-1]+=100
+		elif v=='/':
+			ts[-1]+=1
+		elif v=='^':
+			ts[-1]+=2
+		else:
+			try:
+				ts+=[vs[v]]
+			except:
+				if 1:print('!',ps)
+	sn=[]
+	ss=[]
+	for k in range(0,len(ts)):
+		if ts[k]<43:
+			sn+=[ts[k]%3]
+			ss+=[k]
+	for k in range(1,len(sn)):
+		if sn[k]==1 and sn[k-1]==2 and not (k<len(sn)-1 and (sn[k+1]!=1)):
+			ts[ss[k]]+=2
+	return ts
+def nv():
+    from os import system
+    ks=time.time()
+    pps=''
+    for ps in sys.stdin:
+        if ps=='\n':
+            ps=pps
+        pps=ps
+        ts=snl(ps)
+        system('echo '+' '.join([str(s) for s in ts])+'|./sv 13')
 def l():
     ks=time.time()
     tss=[]
     for ps in sys.stdin:
         if ps=='\n':
             break
-        ts=[]
-        for v in ps:
-            if v==' ' or v=='\n':continue
-            elif v=='~':
-                ts[-1]+=100
-            elif v=='/':
-                ts[-1]+=1
-            elif v=='^':
-                ts[-1]+=2
-            else:
-                try:
-                    ts+=[vs[v]]
-                except:
-                    if 1:print('!',ps)
-        sn=[]
-        ss=[]
-        for k in range(0,len(ts)):
-            if ts[k]<43:
-                sn+=[ts[k]%3]
-                ss+=[k]
-        for k in range(1,len(sn)):
-            if sn[k]==1 and sn[k-1]==2 and not (k<len(sn)-1 and (sn[k+1]!=1)):
-                ts[ss[k]]+=2
+        ts=snl(ps)
         tss+=[ts]
     l=str(int(ks))+';'
     for ts in tss:
@@ -88,5 +101,7 @@ def p():
 
 if len(sys.argv)>1 and sys.argv[1]=='p':
     p()
+elif len(sys.argv)>1 and sys.argv[1]=='n':
+	nv()
 else:l()
 
