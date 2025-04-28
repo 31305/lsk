@@ -57,51 +57,7 @@ def l():
         l+=';'
     l+='\n'
     open('ls','a+').write(l)
-def p():
-    from os import system
-    import datetime
-    l=open('ls','r').read().split('\n')[0:-1]
-    if len(l)==0:
-        return
-    k=0
-    def sl():
-        system('clear')
-        print(str(k)+'<'+str(len(l)))
-        print(datetime.datetime.fromtimestamp(int(l[k].split(';')[0])).strftime('%Y-%m-%d %H:%M:%S'))
-    sl()
-    while 1:
-        nd=input()
-        s=False
-        if nd=='n':
-            system('clear')
-            break
-        elif len(nd)>0 and nd[0]=='s':
-            nd=nd[1:]
-            s=True
-        if nd=='':
-            nd='0'
-        try:
-            nd=int(nd)
-        except:
-            continue
-        if s:
-            if nd<0 and abs(nd)<=len(l):
-                k=len(l)+nd
-            elif nd<len(l):
-                k=nd
-            else:continue
-        else:
-            if k+nd>=0 and k+nd<len(l):
-                k=k+nd
-            else:continue
-        sl()
-        tss=l[k].split(';')[1:-1]
-        for ts in tss:
-            system('echo '+' '.join(ts.split(','))+'|./sv 13')
-
-if len(sys.argv)>1 and sys.argv[1]=='p':
-    p()
-elif len(sys.argv)>1 and sys.argv[1]=='n':
+if len(sys.argv)>1 and sys.argv[1]=='n':
 	nv()
 else:l()
 
