@@ -56,8 +56,9 @@ def l():
         l+=','.join([str(v) for v in ts])
         l+=';'
     l+='\n'
-    open('ls','a+').write(l)
-if len(sys.argv)>1 and sys.argv[1]=='n':
-	nv()
-else:l()
+    open(sys.argv[1],'a+').write(l)
+if len(sys.argv)>1:
+    if sys.argv[1]=='-n':
+        nv()
+    else:l()
 
