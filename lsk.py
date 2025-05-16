@@ -59,11 +59,14 @@ def l():
     open(sys.argv[1],'a+').write(l)
 def kv():
     from os import system
+    import curses
+    curses.initscr()
     l=open(sys.argv[2],'r').read().split('\n')
     for p in l[:-1]:
-        input()
+        sys.stdin.read(1)
         ts=snl(p)
         system('echo '+' '.join([str(s) for s in ts])+'|./sv 13')
+    curses.endwin()
 if len(sys.argv)>1:
     if sys.argv[1]=='-n':
         nv()
