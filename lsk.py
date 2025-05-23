@@ -67,10 +67,26 @@ def kv():
         ts=snl(p)
         system('echo '+' '.join([str(s) for s in ts])+'|./sv 13')
     curses.endwin()
+def vv():
+    k=0
+    import pathlib
+    from os import system
+    ks=pathlib.Path(__file__).parent.resolve().joinpath('k')
+    try:
+        k=int(open(ks,'r').read())
+    except:pass
+    l=open(pathlib.Path(__file__).parent.resolve().joinpath('l'),'r').read().split('\n')
+    if k<len(l)-1:
+        ts=snl(l[k])
+        system('echo '+' '.join([str(s) for s in ts])+'|'+str(pathlib.Path(__file__).parent.resolve())+'/sv 13')
+        k=k+1
+        open(ks,'w').write(str(k))
 if len(sys.argv)>1:
     if sys.argv[1]=='-n':
         nv()
     elif sys.argv[1]=='-k':
         kv()
+    elif sys.argv[1]=='-v':
+        vv()
     else:l()
 
