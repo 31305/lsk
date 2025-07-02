@@ -81,6 +81,10 @@ def vv():
         system('echo '+' '.join([str(s) for s in ts])+'|'+str(pathlib.Path(__file__).parent.resolve())+'/sv 13')
         k=k+1
         open(ks,'w').write(str(k))
+def sl():
+    for ps in sys.stdin:
+        ts=snl(ps)
+        print(' '.join([str(s) for s in ts]))
 if len(sys.argv)>1:
     if sys.argv[1]=='-n':
         nv()
@@ -88,5 +92,7 @@ if len(sys.argv)>1:
         kv()
     elif sys.argv[1]=='-v':
         vv()
+    elif sys.argv[1]=='-s':
+        sl()
     else:l()
 
