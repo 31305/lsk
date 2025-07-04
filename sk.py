@@ -16,12 +16,15 @@ for l in s:
 pss=[lsk.snl(l) for l in pss]
 def k(s):
     n=0
+    b=1
     for k in range(0,len(s)):
-        nn=s[k]<100
-        s[k]=s[k]%100
-        if s[k]<=42:s[k]=math.floor(s[k]/3)
-        if not nn:s[k]=s[k]+100
-        n=n*100+s[k]
+        p=s[k]
+        nn=p<100
+        p=p%100
+        if p<=42:p=math.floor(p/3)
+        if not nn:p=p+100
+        n=n+p/b
+        b=b*200
     return n
 pss.sort(key=lambda l:k(l))
 for l in pss:
