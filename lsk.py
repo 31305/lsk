@@ -22,7 +22,9 @@ def snl(ps):
 			try:
 				ts+=[vs[v]]
 			except:
-				if 1:print('!',ps)
+				if 1:
+                    print('!',ps)
+                    return []
 	sn=[]
 	ss=[]
 	for k in range(0,len(ts)):

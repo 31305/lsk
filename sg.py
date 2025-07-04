@@ -36,7 +36,15 @@ for l in sys.stdin:
                     pl=l[ds+3:ns]+'H'
                 elif l[:lns].endswith('n.') and l[lds+5:lns].find('<')==-1:
                     pl=l[ds+3:ns]
+            elif l[:ns].endswith('i') or l[:ns].endswith('i/') or l[:ns].endswith('i^'):
+                if l[lds+5]=='m':
+                    pl=l[ds+3:ns]+'H'
+                elif l[:lns].endswith('n.') and l[lds+5:lns].find('<')==-1:
+                    pl=l[ds+3:ns]
+                elif l[:lns].find('f')!=-1 and l[lds+5:lns].find('<')==-1:
+                    pl=l[ds+3:ns]+'H'
     pl=pl.replace('-','').replace('\u2014','')
+    if len(lsk.snl(pl))==0:pl=''
     if pl!='' and pl!=p:
         tp.write(pl+'\n')
         p=pl
