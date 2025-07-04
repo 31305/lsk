@@ -18,9 +18,25 @@ for l in sys.stdin:
         lds=l.find('<lex>')
         if lds!=-1 and l[ds+3:ns].find('<')==-1 and (l[ds+3:ns].find('/')!=-1 or l[ds+3:ns].find('^')!=-1):
             lns=l.find('</lex>')
-            if l[:ns].endswith('a') or l[:ns].endswith('a/'):
+            if l[:ns].endswith('a') or l[:ns].endswith('a/') or l[:ns].endswith('a^'):
                 if l[lds+5]=='m':
-                    pl=l[ds+3:ns]+'H\n'
+                    pl=l[ds+3:ns]+'H'
                 elif l[:lns].endswith('n.') and l[lds+5:lns].find('<')==-1:
-                    pl=l[ds+3:ns]+'m\n'
-    tp.write(pl.replace('-','').replace('\u2014',''))
+                    pl=l[ds+3:ns]+'m'
+            elif l[:ns].endswith('A') or l[:ns].endswith('A/') or l[:ns].endswith('A^') or l[:ns].endswith('I') or l[:ns].endswith('I/') or l[:ns].endswith('I^'):
+                if l[lds+5]=='f':
+                    pl=l[ds+3:ns]
+            elif l[:ns].endswith('m'):
+                pl=l[ds+3:ns]
+            elif l[:ns].endswith('s'):
+                if (l[:lns].endswith('n.') or l[:lns].endswith('ind.')) and l[lds+5:lns].find('<')==-1:
+                    pl=l[ds+3:ns-1]+'H'
+            elif l[:ns].endswith('u') or l[:ns].endswith('u/') or l[:ns].endswith('u^'):
+                if l[lds+5]=='m':
+                    pl=l[ds+3:ns]+'H'
+                elif l[:lns].endswith('n.') and l[lds+5:lns].find('<')==-1:
+                    pl=l[ds+3:ns]
+    pl=pl.replace('-','').replace('\u2014','')
+    if pl!='' and pl!=p:
+        tp.write(pl+'\n')
+        p=pl
