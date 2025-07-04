@@ -7,12 +7,14 @@ pss=set()
 for l in s:
     p=l.split(',')
     if len(p)<2:continue
-    if lsk.snl(p[1].replace('\\','^'))==[]:continue
+    p[1]=p[1].replace('\\','^')
+    if lsk.snl(p[1])==[]:continue
+    if p[1].find('/')==-1 and p[1].find('^')==-1:continue
     if p[0] in ss:
         ss[p[0]]=ss[p[0]]+1
     else:ss[p[0]]=1
     if ss[p[0]]<=1:
-        pss.add(p[1].replace('\\','^'))
+        pss.add(p[1])
 pss=[lsk.snl(l) for l in pss]
 def k(s):
     n=0
