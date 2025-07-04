@@ -85,7 +85,7 @@ def sl():
     for ps in sys.stdin:
         ts=snl(ps)
         print(' '.join([str(s) for s in ts]))
-if len(sys.argv)>1:
+if __name__ == "__main__" and len(sys.argv)>1:
     if sys.argv[1]=='-n':
         nv()
     elif sys.argv[1]=='-k':
