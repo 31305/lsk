@@ -29,5 +29,7 @@ def k(s):
         b=b*200
     return n
 if 1:pss.sort(key=lambda l:k(l))
+ppl=False
 for l in pss:
-    print(l)
+    if ppl:print(';'+','.join([str(n) for n in l])+';')
+    else:print(' '.join([str(n) for n in l]))
