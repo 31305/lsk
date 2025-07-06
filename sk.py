@@ -13,7 +13,7 @@ for l in s:
     if p[0] in ss:
         ss[p[0]]=ss[p[0]]+1
     else:ss[p[0]]=1
-    if p[2]=='NOM' and ((ss[p[0]]<=1 and p[3]=='SG') or (ss[p[0]]<=2 and (p[3]=='PL' or p[3]=='SG'))):
+    if p[2]=='NOM' and (1 or ((ss[p[0]]<=1 and p[3]=='SG') or (ss[p[0]]<=2 and (p[3]=='PL' or p[3]=='SG')))):
         pss.add(p[1])
 pss=[(l if 0 else lsk.snl(l)) for l in pss]
 def k(s):
