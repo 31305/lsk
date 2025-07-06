@@ -23,7 +23,7 @@ def snl(ps):
 				ts+=[vs[v]]
 			except:
 				if 1:
-				    print('!',ps)
+				    print('!',ps,file=sys.stderr)
 				    return []
 	sn=[]
 	ss=[]

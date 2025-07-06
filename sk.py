@@ -13,9 +13,9 @@ for l in s:
     if p[0] in ss:
         ss[p[0]]=ss[p[0]]+1
     else:ss[p[0]]=1
-    if ss[p[0]]<=1:
+    if p[2]=='NOM' and ((ss[p[0]]<=1 and p[3]=='SG') or (ss[p[0]]<=2 and (p[3]=='PL' or p[3]=='SG'))):
         pss.add(p[1])
-pss=[lsk.snl(l) for l in pss]
+pss=[(l if 0 else lsk.snl(l)) for l in pss]
 def k(s):
     n=0
     b=1
@@ -28,6 +28,6 @@ def k(s):
         n=n+p/b
         b=b*200
     return n
-pss.sort(key=lambda l:k(l))
+if 1:pss.sort(key=lambda l:k(l))
 for l in pss:
     print(l)
