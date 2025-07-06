@@ -21,10 +21,10 @@ def k(s):
     b=1
     for k in range(0,len(s)):
         p=s[k]
-        nn=p<100
         p=p%100
-        if p<=42:p=math.floor(p/3)
-        if not nn:p=p+100
+        if p<=42:p=math.floor((p-1)/3)
+        elif p<=50:p=p+40
+        elif p==77:p=p+20
         n=n+p/b
         b=b*200
     return n
