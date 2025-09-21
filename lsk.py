@@ -47,19 +47,18 @@ def nv():
         system('echo '+' '.join([str(s) for s in ts])+'|./sv 13')
 def l():
     tss=[]
+    l=''
+    nv=False
     for ps in sys.stdin:
         if ps=='\n':
             break
-        ts=[int(time.time())]+snl(ps)
-        tss+=[ts]
-    l=''
-    for k in range(0,len(tss)):
-        ts=tss[k]
-        l+=str(ts[0])+';'
-        l+=','.join([str(v) for v in ts[1:]])
-        l+=';'
-        if k>0:l+='nv;'
+        l+=str(int(time.time()))+';'
+        for pps in ps.split(' '):
+            l+=','.join([str(v) for v in snl(pps)])
+            l+=';'
+        if nv:l+='nv;'
         l+='\n'
+        nv=True
     open(sys.argv[1],'a+').write(l)
 def kv():
     from os import system
