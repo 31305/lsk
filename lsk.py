@@ -44,7 +44,7 @@ def nv():
             ps=pps
         pps=ps
         ts=snl(ps)
-        system('echo '+' '.join([str(s) for s in ts])+'|sksl tk.wav && play tk.wav')
+        system('echo '+' '.join([str(s) for s in ts])+'|./sksl tk.wav && play tk.wav')
 def l():
     tss=[]
     l=''
