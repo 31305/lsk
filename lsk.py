@@ -49,12 +49,15 @@ def l():
     tss=[]
     l=''
     nv=False
+    from os import system
     for ps in sys.stdin:
         if ps=='\n':
             break
         l+=str(int(time.time()))+';'
         for pps in ps.split(' '):
-            l+=','.join([str(v) for v in snl(pps)])
+            ts=snl(pps)
+            l+=','.join([str(v) for v in ts])
+            system('echo '+' '.join([str(s) for s in ts])+'|./sksl tk.wav && play tk.wav')
             l+=';'
         if nv:l+='nv;'
         l+='\n'
