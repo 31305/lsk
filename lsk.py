@@ -8,7 +8,9 @@ for k in range(0,len(ss)):
 nss='yrlvSzshkKgGNcCjJYwWqQRtTdDnpPbBmMH`'
 for k in range(0,len(nss)):
     vs[nss[k]]=43+k
+msr=False
 def snl(ps):
+	if msr:return [int(s) for s in ps.split(' ')]
 	ts=[]
 	for v in ps:
 		if v==' ' or v=='\n':continue
@@ -45,7 +47,7 @@ def nv():
         pps=ps
         ts=snl(ps)
         system('echo '+' '.join([str(s) for s in ts])+'|./sksl tk.wav && play tk.wav')
-def l():
+def l(sn):
     tss=[]
     l=''
     nv=False
@@ -54,7 +56,7 @@ def l():
         if ps=='\n':
             break
         l+=str(int(time.time()))+';'
-        for pps in ps.split(' '):
+        for pps in ps.split(';'):
             ts=snl(pps)
             l+=','.join([str(v) for v in ts])
             system('echo '+' '.join([str(s) for s in ts])+'|./sksl tk.wav && play tk.wav')
@@ -62,7 +64,7 @@ def l():
         if nv:l+='nv;'
         l+='\n'
         nv=True
-    open(sys.argv[1],'a+').write(l)
+    open(sn,'a+').write(l)
 def kv():
     from os import system
     import curses
@@ -92,13 +94,15 @@ def sl():
         ts=snl(ps)
         print(' '.join([str(s) for s in ts]))
 if __name__ == "__main__" and len(sys.argv)>1:
-    if sys.argv[1]=='-n':
-        nv()
-    elif sys.argv[1]=='-k':
-        kv()
-    elif sys.argv[1]=='-v':
-        vv()
-    elif sys.argv[1]=='-s':
-        sl()
-    else:l()
-
+    for nd in sys.argv[1:]:
+        if nd=='-n':
+            nv()
+        elif nd=='-k':
+            kv()
+        elif nd=='-v':
+            vv()
+        elif nd=='-s':
+            sl()
+        elif nd=='-m':
+            msr=True
+        else:l(nd)
