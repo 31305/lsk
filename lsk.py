@@ -9,6 +9,7 @@ nss='yrlvSzshkKgGNcCjJYwWqQRtTdDnpPbBmMH`'
 for k in range(0,len(nss)):
     vs[nss[k]]=43+k
 msr=False
+sv=False
 def snl(ps):
 	if msr:return [int(s) for s in ps.split(' ')]
 	ts=[]
@@ -59,7 +60,7 @@ def l(sn):
         for pps in ps.split(';'):
             ts=snl(pps)
             l+=','.join([str(v) for v in ts])
-            system('echo '+' '.join([str(s) for s in ts])+'|./sksl tk.wav && play tk.wav')
+            if sv:system('echo '+' '.join([str(s) for s in ts])+'|./sksl tk.wav && play tk.wav')
             l+=';'
         if nv:l+='nv;'
         l+='\n'
