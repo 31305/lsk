@@ -106,4 +106,6 @@ if __name__ == "__main__" and len(sys.argv)>1:
             sl()
         elif nd=='-m':
             msr=True
+        elif nd=='-b':
+            sv=True
         else:l(nd)
