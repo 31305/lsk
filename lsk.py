@@ -56,6 +56,9 @@ def l(sn):
     for ps in sys.stdin:
         if ps=='\n':
             break
+        if ps=='@#\n':
+            system('play tk.wav')
+            continue
         l+=str(int(time.time()))+';'
         for pps in ps.split(';'):
             ts=snl(pps)
