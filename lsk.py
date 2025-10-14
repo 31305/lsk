@@ -2,12 +2,17 @@
 import sys
 import time
 vs={}
+pvs=[' ']*100
 ss='aAiIuUfFxXeEoO'
 for k in range(0,len(ss)):
     vs[ss[k]]=1+k*3
+    pvs[1+k*3]=ss[k]
+    pvs[2+k*3]=ss[k]
+    pvs[3+k*3]=ss[k]
 nss='yrlvSzshkKgGNcCjJYwWqQRtTdDnpPbBmMH`'
 for k in range(0,len(nss)):
     vs[nss[k]]=43+k
+    pvs[43+k]=nss[k]
 msr=False
 sv=False
 def snl(ps):
@@ -97,6 +102,16 @@ def sl():
     for ps in sys.stdin:
         ts=snl(ps)
         print(' '.join([str(s) for s in ts]))
+def dnl():
+    from indic_transliteration import sanscript
+    tp=''
+    for p in open(sys.argv[2],'r').read().split('\n'):
+        for s in p.split(';'):
+            if s=='':continue
+            tp+=sanscript.transliterate(''.join([pvs[int(v)] for v in s.split(',')]),sanscript.SLP1,sanscript.DEVANAGARI)
+            tp+='\u0964 '
+        tp+='<p>'
+    open('tp.html','w').write(tp)
 if __name__ == "__main__" and len(sys.argv)>1:
     for nd in sys.argv[1:]:
         if nd=='-n':
@@ -111,4 +126,6 @@ if __name__ == "__main__" and len(sys.argv)>1:
             msr=True
         elif nd=='-b':
             sv=True
+        elif nd=='-d':
+            dnl()
         else:l(nd)
