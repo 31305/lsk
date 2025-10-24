@@ -106,10 +106,12 @@ def dnl():
     from indic_transliteration import sanscript
     tp=''
     for p in open(sys.argv[2],'r').read().split('\n'):
-        for s in p.split(';'):
-            if s=='':continue
-            tp+=sanscript.transliterate(''.join([pvs[int(v)] for v in s.split(',')]),sanscript.SLP1,sanscript.DEVANAGARI)
-            tp+='\u0964 '
+        if p.startsWith('='):tp+=p[1:]
+        else:
+            for s in p.split(';'):
+                if s=='':continue
+                tp+=sanscript.transliterate(''.join([pvs[int(v)] for v in s.split(',')]),sanscript.SLP1,sanscript.DEVANAGARI)
+                tp+='\u0964 '
         tp+='<p>'
     open('tp.html','w').write(tp)
 if __name__ == "__main__" and len(sys.argv)>1:
