@@ -60,8 +60,6 @@ def l(sn):
     from os import system
     for ps in sys.stdin:
         if ps=='\n':
-            break
-        if ps=='@#\n':
             system('play tk.wav')
             continue
         l+=str(int(time.time()))+';'
