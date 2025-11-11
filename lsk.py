@@ -52,7 +52,7 @@ def nv():
             ps=pps
         pps=ps
         ts=snl(ps)
-        system('echo '+' '.join([str(s) for s in ts])+'|./sksl tk.wav && play tk.wav')
+        system('echo '+' '.join([str(s) for s in ts])+'|./sksl|sox -t au - -d')
 def l(sn):
     tss=[]
     l=''
@@ -66,7 +66,7 @@ def l(sn):
         for pps in ps.split(';'):
             ts=snl(pps)
             l+=','.join([str(v) for v in ts])
-            if sv:system('echo '+' '.join([str(s) for s in ts])+'|./sksl tk.wav && play tk.wav')
+            if sv:system('echo '+' '.join([str(s) for s in ts])+'|./sksl|sox -t au - -d')
             l+=';'
         if nv:l+='nv;'
         l+='\n'
