@@ -60,13 +60,13 @@ def l(sn):
     from os import system
     for ps in sys.stdin:
         if ps=='\n':
-            system('play tk.wav')
+            if sv:system('play tk.au')
             continue
         l+=str(int(time.time()))+';'
         for pps in ps.split(';'):
             ts=snl(pps)
             l+=','.join([str(v) for v in ts])
-            if sv:system('echo '+' '.join([str(s) for s in ts])+'|./sksl|sox -t au - -d')
+            if sv:system('echo '+' '.join([str(s) for s in ts])+'|./sksl|tee tk.au|sox -t au - -d')
             l+=';'
         if nv:l+='nv;'
         l+='\n'
