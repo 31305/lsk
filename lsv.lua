@@ -6,7 +6,6 @@ vim.keymap.set("n","<C-s>",function()
 		local ds=l:sub(s2+2):find(";")
 		if ps and ds then
 			l=l:sub(ps,s2+2+ds)
-			vim.notify(l)
 		else return
 		end
 	else
