@@ -2,7 +2,7 @@ vim.keymap.set("n","<C-s>",function()
 	local l=vim.fn.getline(".")
 	if vim.fn.getline(1)==";1,55,51,1,45,37,51,2,77;" then
 		local s1,s2=unpack(vim.api.nvim_win_get_cursor(0))
-		local ps=l:sub(1,s2):find(".*;")
+		local ps=l:sub(1,s2+1):find(".*;")
 		local ds=l:sub(s2+2):find(";")
 		if ps and ds then
 			l=l:sub(ps,s2+2+ds)
