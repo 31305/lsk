@@ -9,7 +9,7 @@ for k in range(0,len(ss)):
     pvs[1+k*3]=ss[k]
     pvs[2+k*3]=ss[k]
     pvs[3+k*3]=ss[k]
-nss='yrlvSzshkKgGNcCjJYwWqQRtTdDnpPbBmMH`'
+nss='yrlvSzshkKgGNcCjJYwWqQRtTdDnpPbBmMH'
 for k in range(0,len(nss)):
     vs[nss[k]]=43+k
     pvs[43+k]=nss[k]
