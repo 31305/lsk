@@ -66,7 +66,7 @@ def l(sn):
         for pps in ps.split(';'):
             ts=snl(pps)
             l+=','.join([str(v) for v in ts])
-            if sv:system('echo '+' '.join([str(s) for s in ts])+'|./sksl|tee tk.au|sox -t au - -d')
+            if sv:system('echo '+' '.join([str(s) for s in ts])+'|sksl|tee tk.au|sox -t au - -d')
             l+=';'
         if nv:l+='nv;'
         l+='\n'
