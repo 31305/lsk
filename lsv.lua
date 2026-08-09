@@ -24,3 +24,11 @@ vim.keymap.set("n","-",function()
 	vim.cmd("normal! j")
 	sv()
 end)
+vim.api.nvim_create_autocmd("InsertCharPre", {
+  callback=function()
+    local n=vim.v.char
+    if vim.fn.char2nr(n)>127 then
+      vim.v.char=string.format("&#x%X;",vim.fn.char2nr(n))
+    end
+  end,
+})
