@@ -17,10 +17,10 @@ function sv()
 	vim.fn.system("echo "..vim.fn.shellescape(l)..
 	"|sed \"s/^[0-9\\/#]*\\;//g\"|sed \"s/\\;$//g\"|sed \"s/\\;/\\n/g\"|sed \"s/\\,/ /g\"|sksl|sox -t au - -d")
 end
-vim.keymap.set("n","_",function()
+vim.keymap.set("n","-",function()
 	sv()
 end)
-vim.keymap.set("n","-",function()
+vim.keymap.set("n","_",function()
 	vim.cmd("normal! j")
 	sv()
 end)
