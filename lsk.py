@@ -110,7 +110,7 @@ def dnl():
                 if s=='':continue
                 tp+=sanscript.transliterate(''.join([pvs[int(v)] for v in s.split(',')]),sanscript.SLP1,sanscript.DEVANAGARI)
                 tp+='\u0964 '
-        tp+='<p>'
+        tp+='<br>'
     tp+='</body></html>'
     open('tp.html','w').write(tp)
 if __name__ == "__main__" and len(sys.argv)>1:
