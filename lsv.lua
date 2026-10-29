@@ -24,6 +24,9 @@ vim.keymap.set("n","_",function()
 	vim.cmd("normal! j")
 	sv()
 end)
+vim.keymap.set('n','<leader>kn',function()
+  vim.api.nvim_put({tostring(os.time())},'c',false,true)
+end)
 vim.api.nvim_create_autocmd("InsertCharPre", {
   callback=function()
     local n=vim.v.char
